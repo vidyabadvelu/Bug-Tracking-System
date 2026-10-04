@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Tracking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>🐞 Bug Tracking System</h1>
+        <p>Track, manage and resolve software bugs</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <button onclick="showSection('dashboard')">Dashboard</button>
+        <button onclick="showSection('bugs')">All Bugs</button>
+        <button onclick="showSection('report')">Report Bug</button>
+        <button onclick="showSection('developers')">Developers</button>
+    </nav>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="section">
+
+        <h2>Dashboard</h2>
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <h3>Total Bugs</h3>
+                <p id="totalBugs">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Open</h3>
+                <p id="openBugs">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>In Progress</h3>
+                <p id="progressBugs">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Resolved</h3>
+                <p id="resolvedBugs">0</p>
+            </div>
+
+        </div>
+
+        <h2>Recent Bugs</h2>
+        <div id="recentBugs"></div>
+
+    </section>
+
+    <!-- All Bugs -->
+    <section id="bugs" class="section hidden">
+
+        <h2>All Bugs</h2>
+
+        <div class="filters">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search bug..."
+                onkeyup="displayBugs()"
+            >
+
+            <select id="statusFilter" onchange="displayBugs()">
+                <option value="All">All Status</option>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+                <option value="Closed">Closed</option>
+            </select>
+
+            <select id="priorityFilter" onchange="displayBugs()">
+                <option value="All">All Priority</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+
+        </div>
+
+        <div id="bugList"></div>
+
+    </section>
+
+    <!-- Report Bug -->
+    <section id="report" class="section hidden">
+
+        <h2>Report a New Bug</h2>
+
+        <form id="bugForm">
+
+            <label>Bug Title</label>
+            <input type="text" id="bugTitle" required>
+
+            <label>Description</label>
+            <textarea id="bugDescription" required></textarea>
+
+            <label>Project</label>
+            <input type="text" id="project" required>
+
+            <label>Priority</label>
+            <select id="priority">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+
+            <label>Severity</label>
+            <select id="severity">
+                <option value="Critical">Critical</option>
+                <option value="Major">Major</option>
+                <option value="Minor">Minor</option>
+            </select>
+
+            <label>Reported By</label>
+            <input type="text" id="reportedBy" required>
+
+            <label>Assign Developer</label>
+            <select id="developer">
+                <option value="Rahul">Rahul</option>
+                <option value="Priya">Priya</option>
+                <option value="Arun">Arun</option>
+                <option value="Sneha">Sneha</option>
+            </select>
+
+            <button type="submit" class="submit-btn">
+                Report Bug
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- Developers -->
+    <section id="developers" class="section hidden">
+
+        <h2>Development Team</h2>
+
+        <div class="developer-container">
+
+            <div class="developer-card">
+                <h3>👨‍💻 Rahul</h3>
+                <p>Frontend Developer</p>
+                <p>Assigned Bugs: <span id="rahulBugs">0</span></p>
+            </div>
+
+            <div class="developer-card">
+                <h3>👩‍💻 Priya</h3>
+                <p>Backend Developer</p>
+                <p>Assigned Bugs: <span id="priyaBugs">0</span></p>
+            </div>
+
+            <div class="developer-card">
+                <h3>👨‍💻 Arun</h3>
+                <p>Full Stack Developer</p>
+                <p>Assigned Bugs: <span id="arunBugs">0</span></p>
+            </div>
+
+            <div class="developer-card">
+                <h3>👩‍💻 Sneha</h3>
+                <p>Testing Engineer</p>
+                <p>Assigned Bugs: <span id="snehaBugs">0</span></p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Bug Tracking System | Web Technology Project</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
